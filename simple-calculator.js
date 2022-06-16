@@ -213,8 +213,8 @@
 			}
 			// This function evaluates the expression and return result
 			function calculate() {
-				var p = document.getElementById("result").value;
-				var q = eval(p);
+				let p = document.getElementById("result").value;
+				let q = eval(p);
 				document.getElementById("result").value = q;
 			}
 		</script>
