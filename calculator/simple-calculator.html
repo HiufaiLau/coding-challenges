@@ -3,45 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Simple Calculator using HTML, CSS and JavaScript</title>
-		<!-- <link rel="stylesheet" href="styles.css" /> -->
-		<style>
-			@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
-			.calculator {
-				padding: 10px;
-				border-radius: 1em;
-				height: 380px;
-				width: 400px;
-				margin: auto;
-				background-color: #191b28;
-				box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
-					rgba(0, 0, 0, 0.23) 0px 6px 6px;
-			}
-			.display-box {
-				font-family: "Orbitron", sans-serif;
-				background-color: #dcdbe1;
-				border: solid black 0.5px;
-				color: black;
-				border-radius: 5px;
-				width: 100%;
-				height: 65%;
-			}
-			.button {
-				font-family: "Orbitron", sans-serif;
-				background-color: #64278f;
-				color: white;
-				border: solid black 0.5px;
-				width: 100%;
-				border-radius: 5px;
-				height: 70%;
-				outline: none;
-			}
-			.button:active {
-				background: #e5e5e5;
-				-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-				-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-				box-shadow: inset 0px 0px 5px #c1c1c1;
-			}
-		</style>
+		<link rel="stylesheet" href="styles.css" />
 	</head>
 
 	<body>
@@ -50,7 +12,7 @@
 				<td colspan="3">
 					<input class="display-box" type="text" id="result" disabled />
 				</td>
-				<!-- clearScreen() function clear all the values  -->
+
 				<td>
 					<input
 						class="button"
@@ -62,7 +24,6 @@
 				</td>
 			</tr>
 			<tr>
-				<!-- display() function display the value of clicked button -->
 				<td>
 					<input
 						class="button"
@@ -181,7 +142,7 @@
 						onclick="display('0')"
 					/>
 				</td>
-				<!-- calculate() function evaluate the mathematical expression  -->
+
 				<td>
 					<input
 						class="button"
@@ -201,22 +162,7 @@
 				</td>
 			</tr>
 		</table>
-		<script type="text/javascript">
-			// This function clear all the values
-			function clearScreen() {
-				document.getElementById("result").value = "";
-			}
 
-			// This function display values
-			function display(value) {
-				document.getElementById("result").value += value;
-			}
-			// This function evaluates the expression and return result
-			function calculate() {
-				let p = document.getElementById("result").value;
-				let q = eval(p);
-				document.getElementById("result").value = q;
-			}
-		</script>
+		<script src="index.js"></script>
 	</body>
 </html>
