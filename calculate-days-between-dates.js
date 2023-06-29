@@ -29,4 +29,4 @@ function calculateDaysBetweenDates(begin, end) {
 }
 
 calculateDaysBetweenDates('2020-01-01', '2020-01-02');
-calculateDaysBetweenDates('2020-01-01', '2020-01-02T00:00:00.000Z');
+// calculateDaysBetweenDates('2020-01-01', '2020-01-02T00:00:00.000Z');
