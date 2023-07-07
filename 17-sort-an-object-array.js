@@ -8,6 +8,27 @@ function sortLibrary() {
   // use console.log(library) to output the sorted library data
   console.log(library.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0)));
 }
+function compare(lib1, lib2) {
+  if (lib1.title < lib2.title) {
+    return -1;
+  }
+  if (lib1.title > lib2.title) {
+    return 1;
+  }
+  return 0;
+}
+
+function sortLibrary() {
+  // var library is defined, use it in your code
+  // use console.log(library) to output the sorted library data
+  console.log(library.sort(compare));
+}
+function sortLibrary() {
+  // var library is defined, use it in your code
+  // use console.log(library) to output the sorted library data
+  library.sort((a, b) => (a.title > b.title ? 1 : -1));
+  console.log(library);
+}
 
 // Option 2:
 function compare(a, b) {
