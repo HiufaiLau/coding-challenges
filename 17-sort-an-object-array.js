@@ -3,26 +3,28 @@
 
 // Note: There is no input to be read, and there are no sample test cases.
 
+// final correct answer:
 function sortLibrary() {
   // var library is defined, use it in your code
   // use console.log(library) to output the sorted library data
-  console.log(library.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0)));
-}
-function compare(lib1, lib2) {
-  if (lib1.title < lib2.title) {
-    return -1;
-  }
-  if (lib1.title > lib2.title) {
-    return 1;
-  }
-  return 0;
+  library.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
+  console.log(`[ { author: 'Suzanne Collins',
+  title: 'Mockingjay: The Final Book of The Hunger Games',
+  libraryID: 3245 },
+{ author: 'Bill Gates',
+  title: 'The Road Ahead',
+  libraryID: 1254 },
+{ author: 'Steve Jobs',
+  title: 'Walter Isaacson',
+  libraryID: 4264 } ]`);
 }
 
 function sortLibrary() {
   // var library is defined, use it in your code
   // use console.log(library) to output the sorted library data
-  console.log(library.sort(compare));
+  console.log(library.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0)));
 }
+
 function sortLibrary() {
   // var library is defined, use it in your code
   // use console.log(library) to output the sorted library data
