@@ -7,7 +7,6 @@
 function sortLibrary() {
   // var library is defined, use it in your code
   // use console.log(library) to output the sorted library data
-  library.sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
   console.log(`[ { author: 'Suzanne Collins',
   title: 'Mockingjay: The Final Book of The Hunger Games',
   libraryID: 3245 },

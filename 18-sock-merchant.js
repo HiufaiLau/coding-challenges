@@ -13,6 +13,26 @@ Returns
 int: the number of pairs
 */
 
+function sockMerchant(n, ar) {
+  const sockCount = {}; // Object to store the count of each sock color
+  let pairCount = 0; // Variable to store the count of pairs
+
+  // Iterate through the sock colors array
+  for (let i = 0; i < n; i++) {
+    const color = ar[i];
+    if (sockCount[color]) {
+      // If a sock of this color has already been encountered, it forms a pair
+      pairCount++;
+      sockCount[color] = 0; // Reset the count for this color
+    } else {
+      // First occurrence of this color, initialize the count to 1
+      sockCount[color] = 1;
+    }
+  }
+
+  return pairCount;
+}
+
 //(Best) should be  in O(n) time
 function sockMerchant(n, ar) {
   // Write your code here
@@ -22,8 +42,11 @@ function sockMerchant(n, ar) {
     if (obj[i]) {
       n += 1;
       obj[i] = 0;
+      console.log(obj);
+      console.log(n);
     } else {
       obj[i] = 1;
+      console.log(obj);
     }
   });
   return n;
