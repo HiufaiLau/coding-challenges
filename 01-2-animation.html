@@ -1,0 +1,107 @@
+<style>
+  .keys-container .keys {
+    position: absolute;
+
+    left: 0;
+    transform: translate(-200px, 0);
+  }
+
+  .keys-container .keys.one {
+    top: 10%;
+    animation-delay: -1s;
+    animation: slide2 20s linear infinite;
+  }
+
+  .keys-container .keys.two {
+    top: 50%;
+    animation-delay: 0s;
+    animation: slide1 20s linear infinite;
+  }
+
+  .keys-container .keys svg {
+    width: 100%;
+  }
+
+  @keyframes slide1 {
+    from {
+      transform: translate(600px, 0);
+    }
+    to {
+      transform: translate(-600px, 0);
+    }
+  }
+
+  @keyframes slide2 {
+    from {
+      transform: translate(-600px, 0);
+    }
+    to {
+      transform: translate(600px, 0);
+    }
+  }
+</style>
+
+<div class="keys-container">
+  <div class="keys one">
+    <svg
+      width="300px"
+      height="172px"
+      viewBox="0 0 300 172"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <desc>Created with Sketch.</desc>
+      <defs></defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="Artboard"
+          transform="translate(0.000000, -128.000000)"
+          fill="#646464"
+        >
+          <path
+            d="M2.31585584e-14,154.851752 C68.7331536,154.851752 63.7849643,128.44573 108.355795,128.571429 C152.926626,128.697127 169.820095,177.766172 206.199461,177.897574 C242.578827,178.028977 255.976628,155.736148 300,154.851752 C300,155.441349 300,203.824099 300,300 L0,300 C0,203.234501 7.71951947e-15,154.851752 2.31585584e-14,154.851752 Z"
+            id="Path"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="keys two">
+    <svg
+      width="300px"
+      height="172px"
+      viewBox="0 0 300 172"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <desc>Created with Sketch.</desc>
+      <defs></defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="Artboard"
+          transform="translate(0.000000, -128.000000)"
+          fill="#444"
+        >
+          <path
+            d="M2.31585584e-14,154.851752 C68.7331536,154.851752 63.7849643,128.44573 108.355795,128.571429 C152.926626,128.697127 169.820095,177.766172 206.199461,177.897574 C242.578827,178.028977 255.976628,155.736148 300,154.851752 C300,155.441349 300,203.824099 300,300 L0,300 C0,203.234501 7.71951947e-15,154.851752 2.31585584e-14,154.851752 Z"
+            id="Path"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
