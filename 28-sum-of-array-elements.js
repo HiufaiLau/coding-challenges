@@ -10,7 +10,7 @@ array1.forEach(item => {
     sum1 += item;
 });
 
-console.log(sum);
+console.log(sum1);
 
 
 let array2 = [14, 23, 11, 8, 31];

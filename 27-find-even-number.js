@@ -38,7 +38,7 @@ console.log(evenNumber4);
 
 // Performance comparison 
 // Compare the performance of these four methods using an array with 10 million elements (with elements from 1 to 10 million).
-const numbers = [...Array(10000000)].map(
+const numbersArr = [...Array(10000000)].map(
     (_, index) => index + 1
   );
   function measurePerf(label, method) {
@@ -47,11 +47,11 @@ const numbers = [...Array(10000000)].map(
     console.timeEnd(label);
   }
   measurePerf('filter', () => {
-    const evens = numbers.filter((num) => num % 2 === 0);
+    const evens = numbersArr.filter((num) => num % 2 === 0);
   });
   measurePerf('forEach', () => {
     const evens = [];
-    numbers.forEach((num) => {
+    numbersArr.forEach((num) => {
       if (num % 2 === 0) {
         evens.push(num);
       }
@@ -59,7 +59,7 @@ const numbers = [...Array(10000000)].map(
   });
   measurePerf('for...of', () => {
     const evens = [];
-    for (const num of numbers) {
+    for (const num of numbersArr) {
       if (num % 2 === 0) {
         evens.push(num);
       }
@@ -67,8 +67,8 @@ const numbers = [...Array(10000000)].map(
   });
   measurePerf('for', () => {
     const evens = [];
-    for (let i = 0; i < numbers.length; i++) {
-      const num = numbers[i];
+    for (let i = 0; i < numbersArr.length; i++) {
+      const num = numbersArr[i];
       if (num % 2 === 0) {
         evens.push(num);
       }
