@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selector</title>
+</head>
+<body>
+    <h1>Select a Language</h1>
+    <select id="languageSelect">
+        <option value="en" selected>English</option>
+        <option value="de">German</option>
+    </select>
+
+    <!-- First Section -->
+    <section id="section1">
+        <h2>Hello Here </h2>
+        <p>This is the section that contains some short text in English.</p>
+    </section>
+
+    <!-- Second Section -->
+    <section id="section2">
+        <h2>Hallo Hier</h2>
+        <p>Dieser Abschnitt enthält einige kurze Texte in deutscher Sprache.</p>
+    </section>
+
+    <script>
+        // Get the select element and section elements
+        const select = document.getElementById("languageSelect");
+        const section1 = document.getElementById("section1");
+        const section2 = document.getElementById("section2");
+
+        // Function to show/hide sections based on the selected language
+        function updateSections() {
+            const selectedValue = select.value;
+            switch (selectedValue) {
+                case "en":
+                    // Show Section 1 and hide Section 2
+                    section1.style.display = "block";
+                    section2.style.display = "none";
+                    break;
+                case "de":
+                    // Show Section 2 and hide Section 1
+                    section1.style.display = "none";
+                    section2.style.display = "block";
+                    break;
+                default:
+                    // Default case: Show Section 1 and hide Section 2 for unknown values
+                    section1.style.display = "block";
+                    section2.style.display = "none";
+            }
+        }
+
+        // Set the initial state based on the default selected language
+        updateSections();
+
+        // Event listener to handle selection change
+        select.addEventListener("change", updateSections);
+    </script>
+</body>
+</html>
