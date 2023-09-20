@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Child Elements to Clipboard</title>
+</head>
+<body>
+    <h1>Copy Child Elements to Clipboard</h1>
+
+    <!-- HTML elements -->
+    <div id="elementToCopy">
+        <p>This is the element to copy.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <button id="copyButton">Copy Child Elements</button>
+
+    <!-- JavaScript code -->
+    <script>
+        // Function to copy child elements of an element to clipboard
+        function copyToClipboard(el) {
+            const element = document.querySelector(el);
+            const tempContainer = document.createElement('div');
+            
+            // Clone the child nodes of the element and append them to the temporary container
+            for (let child of element.childNodes) {
+                tempContainer.appendChild(child.cloneNode(true));
+            }
+
+            // Create a temporary textarea and set its value to the contents of the temporary container
+            const tempInput = document.createElement('textarea');
+            tempInput.value = tempContainer.innerHTML;
+
+            // Append the temporary input to the document
+            document.body.appendChild(tempInput);
+
+            // Select and copy the text from the temporary input
+            tempInput.select();
+            document.execCommand('copy');
+
+            // Remove the temporary input from the document
+            document.body.removeChild(tempInput);
+            
+            // Alert the user
+            alert('Child elements copied to clipboard');
+        }
+
+        // Attach the function to the button's click event
+        document.getElementById('copyButton').addEventListener('click', function () {
+            copyToClipboard('#elementToCopy');
+        });
+    </script>
+</body>
+</html>
+
+
+
+<p>This is the element to copy.</p>
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
