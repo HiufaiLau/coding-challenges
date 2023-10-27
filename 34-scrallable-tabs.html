@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Create a container div for the buttons */
+.button-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  display: inline-block;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+<h2>Scrollable Tabs</h2>
+
+
+<div class="tab">
+  <div class="button-container"> <!-- Add a container for the buttons -->
+    <button class="tablinks  default" onclick="openTab(event, 'btn-1')">Button 1</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-2')">Button 2</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-3')">Button 3</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-4')">Button 4</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-5')">Button 5</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-6')">Button 6</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-7')">Button 7</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-8')">Button 8</button>
+    <button class="tablinks" onclick="openTab(event, 'btn-9')">Button 9</button>
+  </div>
+</div>
+
+<div id="btn-1" class="tabcontent">
+  <h3>Button 1</h3>
+  <p>Lorem ipsum dolor sit amet.</p>
+</div>
+
+<div id="btn-2" class="tabcontent">
+  <h3>Button 2</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora omnis atque quia necessitatibus temporibus! Nam!</p> 
+</div>
+
+<div id="btn-3" class="tabcontent">
+  <h3>Button 3</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis?</p>
+</div>
+
+<div id="btn-4" class="tabcontent">
+    <h3>Button 4</h3>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  
+  <div id="btn-5" class="tabcontent">
+    <h3>Button 5</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora omnis atque quia necessitatibus temporibus! Nam!</p> 
+  </div>
+  
+  <div id="btn-6" class="tabcontent">
+    <h3>Button 6</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis?</p>
+  </div>
+
+  <div id="btn-7" class="tabcontent">
+    <h3>Button 7</h3>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  
+  <div id="btn-8" class="tabcontent">
+    <h3>Button 8</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora omnis atque quia necessitatibus temporibus! Nam!</p> 
+  </div>
+  
+  <div id="btn-9" class="tabcontent">
+    <h3>Button 9</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis?</p>
+  </div>
+
+<script>
+function openTab(evt, tab) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  
+
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[0].style.display = "block";
+
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tab).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the button with the "default" class and click it to open its associated tab by default
+var defaultButton = document.querySelector(".tablinks.default");
+  if (defaultButton) {
+    defaultButton.click();
+  }
+</script>
+   
+</body>
+</html>
