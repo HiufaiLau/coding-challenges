@@ -51,7 +51,7 @@ body {font-family: Arial;}
 </head>
 <body>
 
-<h2>Scrollable Tabs</h2>
+<h2>Scrollable Tabs Test</h2>
 
 
 <div class="tab">
@@ -113,31 +113,42 @@ body {font-family: Arial;}
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis?</p>
   </div>
 
-<script>
-function openTab(evt, tab) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
+  <script>
+    var currentTab = null; // Store the currently open tab
   
-
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[0].style.display = "block";
-
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tab).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-// Get the button with the "default" class and click it to open its associated tab by default
-var defaultButton = document.querySelector(".tablinks.default");
-  if (defaultButton) {
-    defaultButton.click();
-  }
-</script>
+    // Function to open a specific tab
+    function openTab(event, tabId) {
+      var tabcontent = document.getElementsByClassName("tabcontent");
+      
+      // Hide the currently open tab (if any)
+      if (currentTab !== null) {
+        currentTab.style.display = "none";
+      }
+      
+      // Display the tab content associated with the button that was clicked
+      var selectedTab = document.getElementById(tabId);
+      selectedTab.style.display = "block";
+      
+      // Update the currently open tab
+      currentTab = selectedTab;
+      
+      // Remove the "active" class from all tab links/buttons
+      var tablinks = document.getElementsByClassName("tablinks");
+      for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      // Add the "active" class to the clicked button
+      event.currentTarget.classList.add("active");
+    }
+  
+    // Get the button with the "default" class and click it to open its associated tab by default
+    var defaultButton = document.querySelector(".tablinks.default");
+    if (defaultButton) {
+      defaultButton.click();
+    }
+  </script>
+  
    
 </body>
 </html>
