@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show and Hide Divs with CSS</title>
+    <style>
+        .content {
+            display: none;
+        }
+
+        input[type="radio"]:checked ~ .parent .content {
+            display: block;
+        }
+
+        .parent {
+            display: none;
+        }
+
+        #showP1:checked ~ .parent1,
+        #showDiv2:checked ~ .parent2 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+        <input type="radio" id="showP1" name="options" value="p1"  checked>
+        <label for="showP1">P1</label>
+        <input type="radio" id="showDiv2" name="options" value="p2">
+        <label for="showDiv2">P2</label>
+  
+        <div class="parent parent1">
+            <div class="content">
+                This is Div 1.
+            </div>
+
+            <div class="content">
+              This is Div 2.
+          </div>
+        </div>
+
+       
+        <div class="parent parent2">
+            <div class="content">
+                This is Div 3!
+            </div>
+        </div>
+    
+</body>
+</html>
