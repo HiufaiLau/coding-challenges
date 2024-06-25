@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table Event Listener Example</title>
+  </head>
+  <body>
+    <table id="myTable" border="1">
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+      <tr>
+        <td>Row 1, Cell 1</td>
+        <td>Row 1, Cell 2</td>
+      </tr>
+      <tr>
+        <td>Row 2, Cell 1</td>
+        <td>Row 2, Cell 2</td>
+      </tr>
+    </table>
+
+    <script>
+      // Select the table element
+      const table = document.getElementById("myTable");
+      // Add a click event listener to the table
+      table.addEventListener("click", function (event) {
+        // Check if the clicked element is a cell (td or th)
+        console.log(event.target);
+        console.log(event.target.tagName); 
+        let target= event.target.tagName;
+         if(target === "TD" || target === "TH"){
+          // If it is, log the cell's text content
+    target.innereHTML = "x";
+          console.log("You clicked on " + event.target.innerText)
+        }
+      });
+    </script>
+  </body>
+</html>
