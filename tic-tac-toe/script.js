@@ -12,27 +12,19 @@ const WINNING_COMBINATIONS = [
 ];
 
 const cellElements = document.querySelectorAll('[data-cell]');
+console.log(cellElements);
 const board = document.getElementById('game-board');
 const winningMessageElement = document.getElementById('winning-message');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 const restartButton = document.getElementById('restartButton');
 let oTurn;
 
+console.log('JS Loaded');
+
+
 startGame();
 
 restartButton.addEventListener('click', startGame);
-
-function startGame() {
-    oTurn = false;
-    cellElements.forEach(cell => {
-        cell.classList.remove(X_CLASS);
-        cell.classList.remove(O_CLASS);
-        cell.removeEventListener('click', handleClick);
-        cell.addEventListener('click', handleClick, { once: true });
-    });
-    setBoardHoverClass();
-    winningMessageElement.classList.remove('show');
-}
 
 function handleClick(e) {
     const cell = e.target;
@@ -47,6 +39,20 @@ function handleClick(e) {
         setBoardHoverClass();
     }
 }
+
+
+function startGame() {
+    oTurn = false;
+    cellElements.forEach(cell => {
+        cell.classList.remove(X_CLASS);
+        cell.classList.remove(O_CLASS);
+        cell.removeEventListener('click', handleClick);
+        cell.addEventListener('click', handleClick, { once: true });
+    });
+    setBoardHoverClass();
+    winningMessageElement.classList.remove('show');
+}
+
 
 function endGame(draw) {
     if (draw) {
