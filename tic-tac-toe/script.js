@@ -70,7 +70,10 @@ function isDraw() {
 }
 
 function placeMark(cell, currentClass) {
+    console.log(`Placing mark: ${currentClass}`); // Log the class being added
     cell.classList.add(currentClass);
+    cell.textContent = currentClass.toUpperCase(); // Add the text content to the cell
+    console.log(cell.classList); // Log the classes of the cell
 }
 
 function swapTurns() {
