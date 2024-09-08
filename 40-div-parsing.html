@@ -1,0 +1,131 @@
+write a JS function findMostFrequentClass that processes a given HTML:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div parsing</title>
+</head>
+
+<body>
+    <div id="main">
+        <div class="munich marienplatz">Munich</div>
+        <div class="berlin wall">Berlin
+            <div class="munich ostbahnhof">is</div>
+            <div class="dallas">Dallas</div>
+        </div>
+        <div class="munich nymphenburg">the
+            <div class="milan">Milan
+                <div class="munich isar">best</div>
+                <div class="berlin brandenburg">is</div>
+            </div>
+        </div>
+        <div class="munich english-garden">city</div>
+        <div class="dallas">is</div>
+        <div class="milan">is
+            <div class="milan">an</div>
+        </div>
+        <div class="munich marienplatz ostbahnhof">in</div>
+        <div class="berlin">nice
+            <div class="munich nymphenburg">Germany</div>
+            <div class="dallas">the
+                <div class="berlin wall">but</div>
+                <div class="munich isar">and</div>
+            </div>
+        </div>
+        <div class="munich english-garden">you</div>
+        <div class="berlin checkpoint-charlie">not</div>
+        <div class="munich isar">cannot
+            <div class="dallas">operations</div>
+        </div>
+        <div class="dallas">hub</div>
+        <div class="munich ostbahnhof nymphenburg">change
+            <div class="milan">Italian</div>
+        </div>
+        <div class="munich marienplatz">my</div>
+        <div class="berlin brandenburg">as</div>
+        <div class="munich english-garden">mind</div>
+        <div class="dallas">for
+            <div class="munich isar">about
+                <div class="milan">city</div>
+                <div class="berlin wall">nice
+                    <div class="berlin checkpoint-charlie">as</div>
+                </div>
+            </div>
+        </div>
+        <div class="munich ostbahnhof">it</div>
+        <div class="berlin wall">Munich</div>
+        <div class="dallas">Greyhound</div>
+    </div>
+    <script>
+        function findMostFrequentClass() {
+            // Get all elements with class attributes
+            const elements = document.querySelectorAll('[class]');
+
+            // Object to store frequency of each class
+            const classFrequency = {};
+
+            // Iterate through elements and their classes
+            elements.forEach(element => {
+                const classes = element.classList;
+                classes.forEach(cls => {
+                    if (!classFrequency[cls]) {
+                        classFrequency[cls] = 0;
+                    }
+                    classFrequency[cls]++;
+                });
+            });
+
+            // Find the most frequent class
+            let mostFrequentClass = '';
+            let maxFrequency = 0;
+
+            for (const cls in classFrequency) {
+                if (classFrequency[cls] > maxFrequency) {
+                    mostFrequentClass = cls;
+                    maxFrequency = classFrequency[cls];
+                }
+            }
+
+            // Construct a sentence from elements with the most frequent class
+            const sentenceParts = [];
+            elements.forEach(element => {
+                if (element.classList.contains(mostFrequentClass)) {
+                    sentenceParts.push(element.textContent.trim());
+                }
+            });
+
+            const sentence = sentenceParts.join(' ');
+
+            // Return the result object
+            return {
+                mostFrequentClass: mostFrequentClass,
+                frequencyCount: maxFrequency,
+                sentence: sentence
+            };
+        }
+
+        // Start the function and log the result
+        const result = findMostFrequentClass();
+        console.log(result);
+        console.log(result.frequencyCount);
+        console.log(result.mostFrequentClass);
+        console.log(result.sentence);
+        
+    </script>
+</body>
+
+</html>
+
+
+<!-- 1.analyzes the given HTML structure. 
+2.indentifies and returns the most freuently occuring class name within the  elements. 
+3.constructs a snetence by connecting sequentialy words from elements with the most frequent class. 
+
+expected output:
+The function should return an object with three properties: 
+1. mostFrequentClass: The most fruently occuring class name.
+2. FrequencyCount: The number of times that claas occurs
+3. sentence: A string constructed by conactenating the text inside the elements that have  the most frequent class.
+the function  -->
