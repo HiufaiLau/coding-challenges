@@ -59,60 +59,179 @@ write a JS function findMostFrequentClass that processes a given HTML:
         <div class="dallas">Greyhound</div>
     </div>
     <script>
-        function findMostFrequentClass() {
-            // Get all elements with class attributes
-            const elements = document.querySelectorAll('[class]');
+        // Step 1: Select all elements with a class attribute
+        let elements = document.querySelectorAll('[class]');
 
-            // Object to store frequency of each class
-            const classFrequency = {};
+        // Step 2: Create an object to store class frequencies
+        let classFrequency = {};
 
-            // Iterate through elements and their classes
-            elements.forEach(element => {
-                const classes = element.classList;
-                classes.forEach(cls => {
-                    if (!classFrequency[cls]) {
-                        classFrequency[cls] = 0;
-                    }
-                    classFrequency[cls]++;
-                });
+        // Step 3: Loop through each element to collect class names
+        elements.forEach(element => {
+            let classList = element.classList; // Get class list of current element
+            console.log('cl',classList);
+            classList.forEach(className => {
+                // Increase the count for each class
+                classFrequency[className] = (classFrequency[className] || 0) + 1;
+                console.log('cf',classFrequency);
+                
             });
+        });
 
-            // Find the most frequent class
-            let mostFrequentClass = '';
-            let maxFrequency = 0;
+        // Step 4: Find the class with the highest frequency
+        let mostFrequentClass = Object.keys(classFrequency).reduce((a, b) =>
+            classFrequency[a] > classFrequency[b] ? a : b
+        );
 
-            for (const cls in classFrequency) {
-                if (classFrequency[cls] > maxFrequency) {
-                    mostFrequentClass = cls;
-                    maxFrequency = classFrequency[cls];
-                }
-            }
+        console.log('mfc',mostFrequentClass);
+        
+        // Step 5: Get the direct text content of all elements with the most frequent class, excluding child elements
+        let elementsWithMostFrequentClass = document.querySelectorAll(`.${mostFrequentClass}`);
+        console.log('ewmfc',elementsWithMostFrequentClass);
+        
+        let combinedText = Array.from(elementsWithMostFrequentClass)
+            .map(element => {
+                return Array.from(element.childNodes) //get all child nodes (including text and element nodes)
+                    .filter(node => node.nodeType === Node.TEXT_NODE) // Only get direct text nodes
+                    .map(textNode => textNode.textContent.trim()) // Get the text content and trim it
+                    .join(''); // Join the text nodes of the current element
+            })
+            .join(' '); // Combine all texts into a sentence
 
-            // Construct a sentence from elements with the most frequent class
-            const sentenceParts = [];
-            elements.forEach(element => {
-                if (element.classList.contains(mostFrequentClass)) {
-                    sentenceParts.push(element.textContent.trim());
-                }
-            });
+        // Step 6: Output the most frequent class, its count, and the combined sentence
+        console.log("Most frequent class:", mostFrequentClass);
+        console.log("Count:", classFrequency[mostFrequentClass]);
+        console.log("Combined sentence:", combinedText);
 
-            const sentence = sentenceParts.join(' ');
 
-            // Return the result object
-            return {
-                mostFrequentClass: mostFrequentClass,
-                frequencyCount: maxFrequency,
-                sentence: sentence
-            };
-        }
+
+
+        // function findMostFrequentClass() {
+        //     // Get all elements with class attributes
+        //     const elements = document.querySelectorAll('[class]');
+
+        //     // Object to store frequency of each class
+        //     const classFrequency = {};
+
+        //     // Iterate through elements and their classes
+        //     elements.forEach(element => {
+        //         const classes = element.classList;
+        //         classes.forEach(cls => {
+        //             if (!classFrequency[cls]) {
+        //                 classFrequency[cls] = 0;
+        //             }
+        //             classFrequency[cls]++;
+        //         });
+        //     });
+
+        //     // Find the most frequent class
+        //     let mostFrequentClass = '';
+        //     let maxFrequency = 0;
+
+        //     for (const cls in classFrequency) {
+        //         if (classFrequency[cls] > maxFrequency) {
+        //             mostFrequentClass = cls;
+        //             maxFrequency = classFrequency[cls];
+        //         }
+        //     }
+
+        //     // Construct a sentence from elements with the most frequent class
+        //     const sentenceParts = [];
+        //     elements.forEach(element => {
+        //         if (element.classList.contains(mostFrequentClass)) {
+        //             sentenceParts.push(element.textContent.trim());
+        //         }
+        //     });
+
+        //     const sentence = sentenceParts.join(' ');
+
+        //     // Return the result object
+        //     return {
+        //         mostFrequentClass: mostFrequentClass,
+        //         frequencyCount: maxFrequency,
+        //         sentence: sentence
+        //     };
+        // }
+
+
+        // Function to get the most frequently appearing class
+        // function getMostFrequentClass() {
+        //     const allDivs = document.querySelectorAll('div');
+
+        //     console.log(allDivs);
+
+        //     const classCount = {};
+
+        //     allDivs.forEach(div => {
+        //         const classes = div.className.split(' ');
+        //         console.log(classes);
+
+        //         classes.forEach(cls => {
+        //             if (cls) {
+        //                 classCount[cls] = (classCount[cls] || 0) + 1;
+        //             }
+        //         });
+        //     });
+
+        //     let mostFrequentClass = null;
+        //     let maxCount = 0;
+
+        //     for (const cls in classCount) {
+        //         if (classCount[cls] > maxCount) {
+        //             maxCount = classCount[cls];
+        //             mostFrequentClass = cls;
+        //         }
+        //     }
+
+        //     return mostFrequentClass;
+
+
+        // }
+
+
+        // Function to recursively collect text from nested elements
+        // function collectTextFromClass(className, element = document) {
+        //     let text = '';
+        //     const elements = element.querySelectorAll(`div.${className}`);
+
+        //     elements.forEach(el => {
+        //         text += el.textContent.trim() + ' ';
+        //         // Recursively collect text from nested elements
+        //         text += collectTextFromClass(className, el);
+        //     });
+
+        //     return text;
+        // }
+
+        // Get the most frequent class and combine the text from nested divs
+        // const mostFrequentClass = getMostFrequentClass();
+        // const combinedText = mostFrequentClass ? collectTextFromClass(mostFrequentClass).trim() : "No classes found.";
+
+        // console.log(combinedText);
+
+        // Function to get the text content from elements with the most frequent class
+        //     function getTextFromMostFrequentClass() {
+        //     const mostFrequentClass = getMostFrequentClass();
+        //     if (!mostFrequentClass) {
+        //         return "No classes found.";
+        //     }
+
+        //     const elements = document.querySelectorAll(`div.${mostFrequentClass}`);
+        //     const texts = Array.from(elements).map(el => el.textContent.trim()).filter(text => text.length > 0);
+
+        //     return texts.join(' ');
+        // }
+
+        // console.log(getTextFromMostFrequentClass());
+
+
 
         // Start the function and log the result
-        const result = findMostFrequentClass();
-        console.log(result);
-        console.log(result.frequencyCount);
-        console.log(result.mostFrequentClass);
-        console.log(result.sentence);
-        
+        // const result = getMostFrequentClass();
+        // console.log(result);
+        // console.log(result.frequencyCount);
+        // console.log(result.mostFrequentClass);
+        // console.log(result.sentence);
+
     </script>
 </body>
 
@@ -127,5 +246,5 @@ expected output:
 The function should return an object with three properties: 
 1. mostFrequentClass: The most fruently occuring class name.
 2. FrequencyCount: The number of times that claas occurs
-3. sentence: A string constructed by conactenating the text inside the elements that have  the most frequent class.
-the function  -->
+3. sentence: A string constructed by conactenating the text inside the elements that have the most frequent class.
+ -->
