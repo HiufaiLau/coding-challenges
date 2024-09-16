@@ -17,18 +17,8 @@
 function solution(N) {
     // Convert N to binary
     const binaryString = N.toString(2);
-    console.log(binaryString);
-    
-
-    // Split the binary string by '1' and filter out empty strings
+  // Split the binary string by '1' and filter out empty strings
     const gaps = binaryString.split('1').filter((_, index, arr) => index < arr.length - 1);
-    console.log(gaps);
-    
-
     // Return the length of the longest gap
-    return gaps.length > 0 ? Math.max(...gaps.map(gap => gap.length)) : 0;  
-    console.log(gaps);
-    
+    return gaps.length > 0 ? Math.max(...gaps.map(gap => gap.length)) : 0;   
 }
-
-console.log(solution(1041));
