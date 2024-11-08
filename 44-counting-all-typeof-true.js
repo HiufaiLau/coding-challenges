@@ -1,6 +1,5 @@
 // count all types of true's
-countTrue(["True", "false", false, true, "TRUE", "randomString", 1, "false"]); // 3
-countTrue([true, false, "true", "FALSE", "True", null, undefined, "False"]); // 3
+
 
 const countTrue = arr => arr.filter(item => { 
   if (typeof item === 'boolean') { 
@@ -21,3 +20,6 @@ lowerItem === 'false'
   }
   return false;
 }).length;
+
+countTrue(["True", "false", false, true, "TRUE", "randomString", 1, "false"]); // 3
+countTrue([true, false, "true", "FALSE", "True", null, undefined, "False"]); // 3
