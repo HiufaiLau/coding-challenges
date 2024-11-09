@@ -8,6 +8,22 @@
 //   capitalize('titles of books, movies, songs, plays and other works') --> 'Titles Of Books, Movies, Songs, Plays And Other Works'
 
 function capitalize(str) {
+  let result = str[0].toUpperCase();
+
+  for (let i = 1; i < str.length; i++) {
+    if (str[i - 1] === " ") {
+      result += str[i].toUpperCase();
+    } else {
+      result += str[i];
+    }
+  }
+
+  return result;
+}
+
+console.log(capitalize("what is titlecase?"));
+
+function capitalize(str) {
   const words = str.split(" ");
   const result = [];
 
@@ -28,3 +44,10 @@ function capitalize(str) {
 console.log(
   capitalize("titles of books, movies, songs, plays and other works")
 );
+
+// All of these solutions have a time complexity of
+// 𝑂(𝑛) because they iterate through each character or word once.
+// Therefore, they are equally efficient in terms of Big-O notation.
+
+// The map solution is also concise and clear,
+// making it a popular choice for readability and simplicity in most JavaScript contexts.
