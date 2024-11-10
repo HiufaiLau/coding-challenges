@@ -6,6 +6,8 @@
 // --- Examples
 //   anagrams('coding money', 'money coding') --> True
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
+//   anagrams('the eyes', 'they see') --> True
+//   anagrams('listen', 'silent') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
 let str1 = "coding money";
@@ -58,7 +60,7 @@ function charMap(str) {
   return cahrMap;
 }
 
-function anagram(strA, strB) {
+function anagrams(strA, strB) {
   // step1: Build Char Map - Empty Object for strA
   const charMapA = charMap(strA);
 
@@ -80,4 +82,12 @@ function anagram(strA, strB) {
   return true;
 }
 
-console.log(anagram("code money", "money coding"));
+//solution2
+function cleanStr(str) {
+  return str.toLowerCase().replace(/\s/g, "").split("").sort().join("");
+}
+function anagrams2(strA, strB) {
+  return cleanStr(strA) === cleanStr(strB);
+}
+
+console.log(anagrams2("they see", "The eyes"));
