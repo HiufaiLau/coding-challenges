@@ -123,3 +123,89 @@ var mergeAlternately = function (word1, word2) {
 
 // Example usage:
 console.log(mergeAlternately(["a", "b"], ["c", "a", "d"]));
+
+/** -------------------------------------------------------------------------------------------------------- */
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+
+let result = [];
+let n = Math.max(word1.length, word2.length);
+for (let i = 0; i < n; i++) {
+  if (i < word1.length) {
+    result.push(word1[i]);
+  }
+  if (i < word2.length) {
+    result.push(word2[i]);
+  }
+}
+return result.join("");
+
+var mergeAlternately = function (word1, word2) {
+  let newWord = "";
+
+  for (let i = 0; i < Math.max(word1.length, word2.length); i++) {
+    if (word1[i]) newWord += word1[i];
+    if (word2[i]) newWord += word2[i];
+  }
+
+  return newWord;
+};
+
+var mergeAlternately = function (word1, word2) {
+  var maxLength = Math.max(word1.length, word2.length);
+  var result = [];
+  var index = 0;
+  for (let i = 0; i < maxLength; i++) {
+    if (i < word1.length) {
+      result.push(word1[i]);
+    }
+    if (i < word2.length) {
+      result.push(word2[i]);
+    }
+  }
+
+  return result.join("");
+};
+
+var mergeAlternately = function (word1, word2) {
+  let output = "";
+  let i = 0;
+  let j = 0;
+
+  while (i < word1.length && j < word2.length) {
+    output += word1[i];
+    output += word2[j];
+    i++;
+    j++;
+  }
+
+  while (i < word1.length) {
+    output += word1[i];
+    i++;
+  }
+
+  while (j < word2.length) {
+    output += word2[j];
+    j++;
+  }
+
+  return output;
+};
+
+var mergeAlternately = function (word1, word2) {
+  let result = "";
+  while (word1.length > 0 && word2.length > 0) {
+    result += word1[0];
+    result += word2[0];
+    word1 = word1.substring(1);
+    word2 = word2.substring(1);
+  }
+  if (word1.length > 0) result += word1;
+  if (word2.length > 0) result += word2;
+  return result;
+};
