@@ -49,7 +49,7 @@ function maxChar2(str) {
       maxChar = key;
     }
   }
-  //   return charMap
+  //   return maxChar
   return maxChar;
 }
 maxChar2("abcccccccd");
